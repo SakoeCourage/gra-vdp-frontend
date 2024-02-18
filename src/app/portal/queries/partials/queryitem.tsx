@@ -11,7 +11,7 @@ export interface IQueryProp {
 
 function QueryItem({ title, content, createdAt }: IQueryProp) {
     return (
-        <div className='flex items-center w-full query-list-item p-4 gap-4 '>
+        <div className='flex items-center w-full query-list-item p-4 gap-4 overflow-visible'>
             <nav className=' basis-[3rem] w-[3rem] aspect-square rounded-full'>
                 <IconifyIcon
                     icon='basil:notification-outline'
@@ -29,8 +29,8 @@ function QueryItem({ title, content, createdAt }: IQueryProp) {
                     {diffForHumans(dateReformat(createdAt))}
                 </h3>
             </nav>
-            <Link href="/" className='action-button h-10 w-10 flex items-center justify-center p-2 rounded-full bg-[var(--primary-blue)] text-white'>
-                <Tooltip toolTipText='View Application'>
+            <Link href="/" className='action-button overflow-visible h-10 w-10 flex items-center justify-center p-2 rounded-full bg-[var(--primary-blue)] text-white'>
+                <Tooltip toolTipText='View Query'>
                     <IconifyIcon className='bg-transparent' icon='ph:arrow-right' />
                 </Tooltip>
             </Link>

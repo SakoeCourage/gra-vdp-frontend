@@ -38,7 +38,7 @@ function Header() {
           {/* Notification -------- */}
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <nav className=' !z-[100] flex items-center justify-center relative'>
+              <nav className=' !z-[100]  flex items-center justify-center relative'>
                 <span className=' absolute inline-block h-2 w-2 aspect-square rounded-full bg-red-700 top-1 right-1'>
                   &nbsp;
                 </span>

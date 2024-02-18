@@ -39,7 +39,7 @@ export const handleSignOut = async () => {
     await signOut({
       redirect: false
     })
-    window.location.href = "/landing-page"
+    window.location.href = "/"
   } catch (error) {
     toastnotify("Failed to sign out")
   } finally {

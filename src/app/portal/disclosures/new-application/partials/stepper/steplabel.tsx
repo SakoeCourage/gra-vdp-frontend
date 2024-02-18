@@ -15,8 +15,8 @@ function Steplabel({ index, name, active, completed, pending, onStepChange }: {
     return (
         <button onClick={() => onStepChange(index)}
             className={classNames({
-                "flex  items-center gap-1 px-2 pr-4 font-medium grow-1 py-1 border-[1px] border-gray-500  rounded-full": true,
-                "bg-sky-100 border-sky-600 text-sky-800 font-semibold": active,
+                "flex  items-center gap-1 px-2 pr-4 font-medium grow-1 py-1 border-[1px] border-gray-500  rounded-full snap-center": true,
+                "bg-sky-100 border-sky-600 text-sky-800 font-semibold active-step-label": active,
                 "text-sky-800 bg-sky-100/75": completed,
                 "text-gray-500": pending
             })}>

@@ -67,6 +67,18 @@ const SimpleStepper: React.FC<StepperParams<any>> = ({ steps, data, errors, hand
         setCurrentStepData(data)
     }, [data])
 
+    useEffect(() => {
+        // const stepperLabelContainer = document.querySelector('#stepper-label-container')
+        // const currentElement = document.querySelector(".active-step-label");
+        // if (currentElement && stepperLabelContainer) {
+        //     stepperLabelContainer.scrollBy({
+        //         left: currentElement?.offsetLeft,
+        //         behavior: 'smooth'
+        //     })
+        // }
+    }, [currentIndex])
+
+
 
     const handleNextStep = async () => {
         var currentStep = steps[currentIndex]
@@ -98,9 +110,9 @@ const SimpleStepper: React.FC<StepperParams<any>> = ({ steps, data, errors, hand
 
     return (
         <div id='stepper-content-head' className='h-full flex flex-col' >
-            <div className=' flex items-center gap-1 px-2 py-3 border-b overflow-x-scroll overflow-y-hidden hiddenscroll sticky top-[0] bg-white z-20'>
+            <div id='stepper-label-container' className=' snap-x flex items-center gap-1 px-2 py-3 border-b overflow-x-scroll overflow-y-hidden hiddenscroll sticky top-[0] bg-white z-20'>
                 {steps.map((step, i) => {
-                    return <nav key={i} className='flex items-center  gap-1'>
+                    return <nav key={i} className={`flex items-center gap-1 ${i == currentIndex && 'snap-center'}`}>
                         <Steplabel
                             active={i == currentIndex}
                             completed={currentIndex > i}
