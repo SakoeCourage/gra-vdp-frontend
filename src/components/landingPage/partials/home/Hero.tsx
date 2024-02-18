@@ -4,7 +4,7 @@ import Herothumbnails from "./Herothumails";
 
 function Hero() {
   return (
-    <section className=" grid grid-cols-2 container mx-auto  ">
+    <section className="relative isolate grid grid-cols-1 lg:grid-cols-2 container mx-auto  ">
       <Herocitation />
       <Herothumbnails />
     </section>

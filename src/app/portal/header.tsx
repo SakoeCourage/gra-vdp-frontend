@@ -8,8 +8,8 @@ import { IQueryProp } from './queries/partials/queryitem'
 import { Queries } from './queries/partials/querylist'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '../components/ui/dropdown'
 import { useSession } from 'next-auth/react'
-import { getInitials } from '../lib/utils'
 import { handleSignOut } from '@app/providers/Authserviceprovider/userAuthentication'
+import { Accountsmenu } from '@app/components/landingPage/partials/home/Accountsmenu'
 
 function NotificationDropDown({ queries }: { queries: IQueryProp[] }) {
   return <div className=' max-h-[80vh] overflow-y-scroll'>
@@ -17,24 +17,25 @@ function NotificationDropDown({ queries }: { queries: IQueryProp[] }) {
   </div>
 }
 
-
 function Header() {
   const { status, data } = useSession()
 
   return < div className='border-b border-gray-300 bg-[var(--primary-blue)]' >
-    <div className='flex items-center container  mx-auto justify-evenly py-2 h-[var(--header-height)] '>
+    <div className='flex items-center container  mx-auto justify-between lg:justify-evenly py-2 h-[var(--header-height)] '>
       <nav className='  flex items-start justify-center gap-1'>
         <Link href="/portal/home" className='object-contain h-[3rem] '>
           <Image className=' h-full w-full' src="/images/gra-logo.png" height={4000} width={400} quality={100} alt='gra-logo' />
 
         </Link>
-
+        <nav className=' text-blue-100 flex  text-2xl font-semibold mx-auto my-auto lg:hiddne items-center justify-center h-full tracking-wider'>
+          VDP
+        </nav>
       </nav>
-      <nav className=' text-blue-100 text-base font-semibold mx-auto my-auto flex items-center justify-center h-full tracking-wider'>
+      <nav className=' text-blue-100 hidden  text-base font-semibold mx-auto my-auto lg:flex items-center justify-center h-full tracking-wider'>
         Voluntary Disclosure Program
       </nav>
       <nav>
-        {status === "authenticated" && <nav className=' flex items-center gap-5 ml-auto'>
+        {status === "authenticated" && <nav className=' flex items-center gap-1 lg:gap-5 ml-auto'>
           {/* Notification -------- */}
           <DropdownMenu>
             <DropdownMenuTrigger>
@@ -51,8 +52,10 @@ function Header() {
           </DropdownMenu>
 
           {/* Notification ends.............. */}
-
-          <nav className='flex items-center gap-3 text-blue-50'>
+          <nav className='block lg:hidden'>
+            <Accountsmenu />
+          </nav>
+          <nav className='lg:flex hidden items-center gap-3 text-blue-50'>
             <nav className='h-[2.0rem] w-[2.0rem] rounded-full bg-sky-600 flex items-center justify-center overflow-hidden object-cover'>
               <nav className=' overflow-hidden h-12 w-12 shadow  font-medium rounded-full  p-1 aspect-square uppercase flex items-center justify-center gap-[0.20rem]'>
                 {data?.user?.surname.charAt(0)}.{data?.user?.otherNames.charAt(0)}

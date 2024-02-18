@@ -44,7 +44,7 @@ function Statscard({ className, title, quantity, icon, captions = "long text que
                     </h2>
                     <Link style={{ borderWidth: '1px', borderColor: theme, backgroundColor: theme, color: "white" }} href={link} className={classNames(
                         {
-                            "font-semibold text-base p-3 px-6 rounded-full flex items-center gap-3": true,
+                            "font-semibold text-sm whitespace-nowrap truncate lg:text-base p-3 px-6 rounded-full flex items-center gap-3": true,
                         }
                     )}>
                         {actionText}

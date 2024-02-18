@@ -40,6 +40,19 @@ function page() {
       </nav>
 
       <div className='gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+      <Statscard
+          className='bg-indigo-100'
+          theme='#3b82f6'
+          actionText='Start New Application'
+          iconBg='#3b82f6'
+          link='/portal/disclosures/new-application'
+          icon='fluent:tab-new-24-filled'
+          captions='
+          The program incentivizes individuals and businesses to voluntarily disclose any undisclosed or underreported financial activities outside Ghana, offering participants several benefits.
+          '
+          title='VDP Application'
+          quantity={""}
+        />
         <Statscard
           className='bg-sky-100'
           theme='#0284c7'
@@ -63,19 +76,7 @@ function page() {
           title='Application Queries'
           quantity={unreadCounts?.queries ?? "..."}
         />
-        <Statscard
-          className='bg-indigo-100'
-          theme='#3b82f6'
-          actionText='Start New Application'
-          iconBg='#3b82f6'
-          link='/portal/disclosures/new-application'
-          icon='fluent:tab-new-24-filled'
-          captions='
-          The program incentivizes individuals and businesses to voluntarily disclose any undisclosed or underreported financial activities outside Ghana, offering participants several benefits.
-          '
-          title='VDP Application'
-          quantity={""}
-        />
+  
       </div>
 
     </div>

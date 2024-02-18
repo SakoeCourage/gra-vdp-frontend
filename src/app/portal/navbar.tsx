@@ -35,7 +35,7 @@ function NavbarItem(props: IRoute) {
     const { title, icon, link } = props
     return <Link href={link} className={
         classNames({
-            "flex items-center gap-1 text-sm font-medium ": true,
+            "flex items-center gap-1  text-xs lg:text-sm  font-medium ": true,
             "nav-route-inactive": !pathname.startsWith(link),
             "nav-route-active": pathname.startsWith(link),
         })
@@ -51,10 +51,10 @@ function Navbar() {
     const usePath = usePathname()
     const router = useRouter();
     return (
-        <div className='border-b shadow-sm bg-slate-200'>
+        <div className='border-b shadow-sm z-[70] bg-slate-200 sticky top-0'>
             <div className=' container mx-auto h-[var(--header-height)] py-1 flex items-center gap-7 '>
                 {RouteList.map((route, i) => <NavbarItem key={i} {...route} />)}
-                <Button  onClick={() => router.push('/portal/disclosures/new-application')} variant='default' size='auto' className='ml-auto flex items-center  !py-1 !rounded-lg'>
+                <Button  onClick={() => router.push('/portal/disclosures/new-application')} variant='default' size='auto' className='ml-auto !hidden lg:!flex items-center  !py-1 !rounded-lg'>
                      Start New VDP Application
                     <IconifyIcon icon='formkit:arrowright' className='bg-transparent' />
                 </Button>

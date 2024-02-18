@@ -114,7 +114,7 @@ const SimpleStepper: React.FC<StepperParams<any>> = ({ steps, data, errors, hand
                 })
                 }
             </div>
-            <div className=' grow my-auto py-5 px-10 bg-[#F6F8FA]  rounded-md'>
+            <div className=' grow my-auto py-5  px-1 lg:px-10 bg-[#F6F8FA]  rounded-md'>
                 <nav className=' border-b text-gray-600 text-lg pb-2 mb-2'>
                     {steps[currentIndex].label}
                 </nav>

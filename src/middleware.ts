@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
     const currentAuthToken = request.cookies.get("next-auth.session-token")?.value || request.cookies.get("__Secure-next-auth.session-token")?.value;
     if (currentAuthToken === undefined) {
-        if (!request.url.endsWith("/login") && !request.url.includes('/landing-page') && !request.url.includes("/sign-up")) {
+        if (!request.url.endsWith("/login") && !request.url.includes('/landing-page') && !request.url.includes("/sign-up") && !request.url.endsWith("/")) {
             return NextResponse.redirect(new URL('/login', request.url));
         }
     } else {

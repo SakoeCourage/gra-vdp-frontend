@@ -59,8 +59,8 @@ function ChoiceCard({ name, description, link, icon }: IChoice) {
 function page() {
     return (
         <div className=' container mx-auto p-5'>
-            <nav className='flex flex-col items-center gap-10 w-max mx-auto'>
-                <nav className=' text-4xl font-semibold text-gray-600 add_underline mx-auto'>
+            <nav className='flex flex-col items-center gap-10 w-auto lg:w-max mx-auto'>
+                <nav className=' text-2xl md:text-3xl lg:text-4xl font-semibold flex flex-col items-center lg:items-start lg:flex-row  text-gray-600 add_underline mx-auto'>
                     Welcome to the, <span className=' text-[var(--primary-blue)]'>Voluntary Disclosure Program</span>
                 </nav>
                 <nav className=' text-2xl  text-gray-600  font-semibold'>
