@@ -3,10 +3,11 @@ import { useSession } from "next-auth/react";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@app/app/components/ui/dropdown";
 import IconifyIcon from "@app/components/ui/IconifyIcon";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 export const Accountsmenu = (): React.JSX.Element => {
     const { status, data } = useSession()
     return <DropdownMenu >
-        <DropdownMenuTrigger asChild className=' ml-auto'>
+        <DropdownMenuTrigger asChild className='ml-auto'>
             <div className="lg:hidden flex">
                 <nav className=' border-white pl-2 flex items-center gap-3 text-blue-50'>
                     <nav className='h-[2.0rem] w-[2.0rem] rounded-full bg-sky-600 flex items-center justify-center overflow-hidden object-cover'>
@@ -18,7 +19,7 @@ export const Accountsmenu = (): React.JSX.Element => {
             </div>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent className='bg-white z-40 min-w-[16rem] mr-4'>
+        <DropdownMenuContent className='bg-white z-[80] min-w-[16rem] mr-4'>
             <div className="px-2 py-6 flex items-center gap-3  border-b">
                 <IconifyIcon icon="ph:user" />
                 <nav className=" flex items-start justify-center gap-1">
