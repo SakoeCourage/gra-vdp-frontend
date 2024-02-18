@@ -68,14 +68,20 @@ const SimpleStepper: React.FC<StepperParams<any>> = ({ steps, data, errors, hand
     }, [data])
 
     useEffect(() => {
-        // const stepperLabelContainer = document.querySelector('#stepper-label-container')
-        // const currentElement = document.querySelector(".active-step-label");
-        // if (currentElement && stepperLabelContainer) {
-        //     stepperLabelContainer.scrollBy({
-        //         left: currentElement?.offsetLeft,
-        //         behavior: 'smooth'
-        //     })
-        // }
+        const stepperLabelContainer = document.querySelector('#stepper-label-container')
+        const currentElement = document.querySelector(".active-step-label");
+        if (currentElement && stepperLabelContainer) {
+            const containerRect = stepperLabelContainer.getBoundingClientRect();
+            const pillRect = currentElement.getBoundingClientRect();
+            const offsetLeft = pillRect.left - containerRect.left;
+            const pillCenter = (pillRect.left - containerRect.left) + (pillRect.width / 2);
+            const scrollLeft = pillCenter - (containerRect.width / 2);
+            stepperLabelContainer.scrollBy({
+                left: scrollLeft,
+                behavior: 'smooth'
+            })
+    
+        }
     }, [currentIndex])
 
 
