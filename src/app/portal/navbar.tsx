@@ -51,7 +51,7 @@ function Navbar() {
     const usePath = usePathname()
     const router = useRouter();
     return (
-        <div className='border-b shadow-sm z-[70] bg-slate-200 sticky top-0'>
+        <div className='border-b shadow-sm z-[60] bg-slate-200 sticky top-0'>
             <div className=' container mx-auto h-[var(--header-height)] py-1 flex items-center gap-7 '>
                 {RouteList.map((route, i) => <NavbarItem key={i} {...route} />)}
                 <Button  onClick={() => router.push('/portal/disclosures/new-application')} variant='default' size='auto' className='ml-auto !hidden lg:!flex items-center  !py-1 !rounded-lg'>

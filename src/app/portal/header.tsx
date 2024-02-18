@@ -12,7 +12,7 @@ import { handleSignOut } from '@app/providers/Authserviceprovider/userAuthentica
 import { Accountsmenu } from '@app/components/landingPage/partials/home/Accountsmenu'
 
 function NotificationDropDown({ queries }: { queries: IQueryProp[] }) {
-  return <div className=' max-h-[80vh] overflow-y-scroll'>
+  return <div className=' lg:max-h-[80vh] !z-[100] w-max max-w-[100dvw] overflow-y-scroll'>
     <Querylist queries={queries} />
   </div>
 }
@@ -25,7 +25,6 @@ function Header() {
       <nav className='  flex items-start justify-center gap-1'>
         <Link href="/portal/home" className='object-contain h-[3rem] '>
           <Image className=' h-full w-full' src="/images/gra-logo.png" height={4000} width={400} quality={100} alt='gra-logo' />
-
         </Link>
         <nav className=' text-blue-100 flex  text-2xl font-semibold mx-auto my-auto lg:hiddne items-center justify-center h-full tracking-wider'>
           VDP
@@ -34,19 +33,19 @@ function Header() {
       <nav className=' text-blue-100 hidden  text-base font-semibold mx-auto my-auto lg:flex items-center justify-center h-full tracking-wider'>
         Voluntary Disclosure Program
       </nav>
-      <nav>
+      <nav className='!z-[100]'>
         {status === "authenticated" && <nav className=' flex items-center gap-1 lg:gap-5 ml-auto'>
           {/* Notification -------- */}
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <nav className=' flex items-center justify-center relative'>
+              <nav className=' !z-[100] flex items-center justify-center relative'>
                 <span className=' absolute inline-block h-2 w-2 aspect-square rounded-full bg-red-700 top-1 right-1'>
                   &nbsp;
                 </span>
                 <IconifyIcon className='bg-transparent text-blue-100' icon='basil:notification-outline' />
               </nav>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent >
               <NotificationDropDown queries={Queries} />
             </DropdownMenuContent>
           </DropdownMenu>

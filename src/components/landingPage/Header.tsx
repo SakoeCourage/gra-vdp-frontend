@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { handleSignOut } from "@app/providers/Authserviceprovider/userAuthentication";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@app/app/components/ui/dropdown";
 import { Accountsmenu } from "./partials/home/Accountsmenu";
 const Header = () => {
   const { data, status } = useSession()
