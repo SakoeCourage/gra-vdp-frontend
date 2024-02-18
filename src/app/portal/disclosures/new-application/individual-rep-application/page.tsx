@@ -187,7 +187,11 @@ function Page() {
                         }
                     }
                     const { attachments, ...rest } = res.data
-                    setData({ attachments: resAttacthments, ...rest })
+                    if (res.data.completed) {
+                        router.replace("/portal/disclosures")
+                    } else {
+                        setData({ attachments: resAttacthments, ...rest })
+                    }
                 })
                 .catch(err => {
                     console.log(err)
