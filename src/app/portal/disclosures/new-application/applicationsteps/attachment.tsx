@@ -18,7 +18,7 @@ function convertFileToBase64(file: File): Promise<string> {
     });
 }
 
-function converBase64StringToFile(bs64string: string, index: number): File {
+function converBase64StringToFile(bs64string: string, filename:string): File {
     let file: File | null = null;
     if (typeof bs64string === "string") {
         const inputString = bs64string as string;
@@ -30,7 +30,6 @@ function converBase64StringToFile(bs64string: string, index: number): File {
         const extension = inputString.substring(startIndex, endIndex);
         const base64Buffer = Buffer.from(base64Data, 'base64');
         const blob = new Blob([base64Buffer]);
-        const filename = `Attachment - ${index+1}`;
         file = new File([blob], filename, { type: extension });
     }
     return file
@@ -65,17 +64,19 @@ const Attachment: StepperComponent<Partial<applicationIndividualSelfDto>> = (pro
     }
 
 
+   
     const getFilesFormBase64StringsArray = (files: File[]) => {
         let currentFiles: File[] = []
         if (Boolean(files.length)) {
             const filesString: string[] = data?.attachments
             filesString.forEach((fs, i) => {
-                currentFiles = [...currentFiles,
-                converBase64StringToFile(fs, i)]
+                const filename = `Attachment - ${i + 1}`; 
+                currentFiles = [...currentFiles, converBase64StringToFile(fs, filename)]
             })
         }
         return currentFiles
     }
+    
 
     return (
         <div className='relative isolate'>

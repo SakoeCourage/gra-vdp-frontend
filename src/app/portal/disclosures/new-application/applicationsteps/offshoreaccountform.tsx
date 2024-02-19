@@ -43,7 +43,7 @@ function OffshoreAccountForm(props: params) {
 
     }
     return (
-        <div className='flex flex-col gap-3 max-w-md mx-auto py-10'>
+        <div className='flex flex-col gap-3 max-w-md mx-auto py-10 px-3 lg:px-0'>
             <Selectoption
                 value={data?.currency}
                 error={errors.currency}

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import IconifyIcon from '../IconifyIcon';
 import { isBlob, isFile } from './fileupload';
+import Fileview from './Fileview';
 
 interface FileRendererProps {
   file: File | Blob
@@ -9,12 +10,13 @@ interface FileRendererProps {
 }
 
 const Filetyperenderer: React.FC<FileRendererProps> = ({ file, removeFile, index }) => {
-  useEffect(() => {
-    if(isBlob(file)){      
-      console.log("From Renderer",file)
-    }
-  }, [file])
-  
+  const [currentFile, setCurrentFile] = useState<File | null>(null)
+
+  function openFileInBrowser(file: File) {
+    const fileURL = URL.createObjectURL(file);
+    window.open(fileURL, '_blank');
+  }
+
   return (
     <div
       className=" aspect-square w-full h-full min-h-44 min-w-44  border rounded-md object-cover relative"
@@ -24,15 +26,16 @@ const Filetyperenderer: React.FC<FileRendererProps> = ({ file, removeFile, index
       {["image/jpeg", "image/jpg", "image/png"].includes(file.type) || isBlob(file) ?
         (
           <img
+            onClick={() => openFileInBrowser(file)}
             src={URL.createObjectURL(file)}
             alt=""
-            className="min-h-40 min-w-40 h-full w-full object-contain aspect-square"
+            className="min-h-40 min-w-40 h-full cursor-pointer w-full object-contain aspect-square"
           />
         ) :
         (
           isFile(file) && ["application/pdf"].includes(file.type) ?
             (
-              <div className='truncate flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
+              <div onClick={() => openFileInBrowser(file)} className='truncate cursor-pointer flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
                 <IconifyIcon className='!h-16 !w-16' fontSize="3.5rem" icon='vscode-icons:file-type-pdf2' />
                 <abbr title={file.name} className='text-center text-decoration-none truncate text-gray-600 w-full'>{file.name}</abbr>
               </div>
@@ -40,13 +43,13 @@ const Filetyperenderer: React.FC<FileRendererProps> = ({ file, removeFile, index
             (
               ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv"].includes(file.type) ?
                 (
-                  <div className='truncate flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
+                  <div  onClick={() => openFileInBrowser(file)} className='truncate cursor-pointer flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
                     <IconifyIcon className='!h-16 !w-16' fontSize="3.5rem" icon='vscode-icons:file-type-excel' />
                     <abbr title={file.name} className='text-center text-decoration-none truncate text-gray-600 w-full'>{file.name}</abbr>
                   </div>
                 ) :
                 (
-                  <div className='truncate flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
+                  <div className='truncate cursor-pointer flex flex-col gap-2 items-center justify-center h-full w-full p-3'>
                     <IconifyIcon className='!h-16 !w-16 text-gray-500' fontSize="3.5rem" icon='basil:file-outline' />
                     <abbr title={file.name} className='text-center text-decoration-none truncate text-gray-600 w-full'>{file.name}</abbr>
                   </div>
